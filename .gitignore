@@ -1,4 +1,5 @@
 legal_chroma_db/
+CLAUDE.md
 .env
 *.env
 __pycache__/

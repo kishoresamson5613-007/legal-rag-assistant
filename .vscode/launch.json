@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Streamlit App",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": ["run", "${workspaceFolder}/app.py", "--server.port=8501"],
+      "justMyCode": true,
+      "env": {
+        "GROQ_API_KEY": "${env:GROQ_API_KEY}"
+      }
+    },
+    {
+      "name": "Debug Streamlit App",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "${workspaceFolder}/app.py",
+        "--server.port=8501",
+        "--server.runOnSave=true"
+      ],
+      "justMyCode": false,
+      "env": {
+        "GROQ_API_KEY": "${env:GROQ_API_KEY}"
+      }
+    }
+  ]
+}

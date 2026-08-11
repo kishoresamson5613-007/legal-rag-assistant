@@ -42,8 +42,8 @@ TOP_K = 5             # How many chunks to retrieve per question
 
 # Hallucination detection:
 # ChromaDB distance: 0.0 = identical, 1.0 = completely different
-# If best chunk distance > 0.6 → document likely doesn't have the answer
-LOW_CONFIDENCE_THRESHOLD = 0.8
+# If best chunk distance > 0.41 → document likely doesn't have the answer
+LOW_CONFIDENCE_THRESHOLD = 0.41
 
 
 # ============================================================

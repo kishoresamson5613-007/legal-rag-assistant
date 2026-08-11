@@ -26,7 +26,7 @@ QUERY_PREFIXES = {
     "BAAI/bge-small-en-v1.5": "Represent this sentence for searching relevant passages: ",
 }
 
-LOW_CONFIDENCE_THRESHOLD = 0.8  # same hallucination-guard threshold as app.py
+LOW_CONFIDENCE_THRESHOLD = 0.41  # same hallucination-guard threshold as app.py
 
 
 @dataclass(frozen=True)

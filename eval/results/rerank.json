@@ -1,0 +1,222 @@
+{
+  "summary": {
+    "config": {
+      "name": "rerank",
+      "chunk_size": 800,
+      "chunk_overlap": 100,
+      "embed_model": "all-MiniLM-L6-v2",
+      "use_reranker": true,
+      "rerank_candidates": 20,
+      "top_k": 5
+    },
+    "num_chunks": 105,
+    "index_seconds": 8.1,
+    "n_answerable": 15,
+    "n_unanswerable": 5,
+    "retrieval": {
+      "hit@1": 0.6,
+      "hit@3": 0.6667,
+      "hit@5": 0.8,
+      "hit@10": 0.8,
+      "mrr": 0.6667,
+      "precision@5": 0.1867
+    },
+    "guard_false_alarm_rate": 0.0,
+    "guard_catch_rate": 1.0,
+    "evidence_not_located": 0
+  },
+  "per_question": [
+    {
+      "question": "Who published the report that triggered the fall in Adani group share prices, and when was it published?",
+      "evidence_located": true,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 1.0,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "Who chaired the Expert Committee constituted by the Supreme Court?",
+      "evidence_located": true,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 1.0,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "Who were the members of the Expert Committee besides the Chairperson?",
+      "evidence_located": true,
+      "hit@1": 0.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 0.5,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "What three issues did the Supreme Court direct SEBI to investigate in its 2 March 2023 order?",
+      "evidence_located": true,
+      "hit@1": 0.0,
+      "hit@3": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "mrr": 0.0,
+      "precision@5": 0.0,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "How many of the investigations into the Adani group has SEBI completed, and why are the rest pending?",
+      "evidence_located": true,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 1.0,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "What deadline did the Supreme Court set for SEBI to complete its two pending investigations?",
+      "evidence_located": true,
+      "hit@1": 0.0,
+      "hit@3": 0.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 0.25,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "What is the scope of judicial review when a court examines a policy framed by a specialized regulator like SEBI?",
+      "evidence_located": true,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 1.0,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "Did the Supreme Court find any regulatory failure by SEBI in relation to the amendments to the FPI and LODR Regulations?",
+      "evidence_located": true,
+      "hit@1": 0.0,
+      "hit@3": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "mrr": 0.0,
+      "precision@5": 0.0,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "Under which constitutional provisions can the Supreme Court transfer an investigation to the CBI or constitute an SIT, and when should that power be used?",
+      "evidence_located": true,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 1.0,
+      "precision@5": 0.4,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "What did the Supreme Court say about relying on the OCCRP report and newspaper articles to question SEBI's investigation?",
+      "evidence_located": true,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 1.0,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "When did the DRI write to the SEBI Chairperson, and what did the letter allege?",
+      "evidence_located": true,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 1.0,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "How did the Court deal with the conflict of interest allegation against Mr Somasekhar Sundaresan?",
+      "evidence_located": true,
+      "hit@1": 0.0,
+      "hit@3": 0.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 0.25,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "How does the judgment define short selling?",
+      "evidence_located": true,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 1.0,
+      "precision@5": 0.4,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "What did the Expert Committee conclude about the impact of the Adani stock volatility on the Indian market as a whole?",
+      "evidence_located": true,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 1.0,
+      "precision@5": 0.2,
+      "guard_false_alarm": false
+    },
+    {
+      "question": "What did the Court direct regarding the entities that engaged in short selling around the Hindenburg report?",
+      "evidence_located": true,
+      "hit@1": 0.0,
+      "hit@3": 0.0,
+      "hit@5": 0.0,
+      "hit@10": 0.0,
+      "mrr": 0.0,
+      "precision@5": 0.0,
+      "guard_false_alarm": false
+    }
+  ],
+  "unanswerable": [
+    {
+      "question": "What monetary penalty did the Supreme Court impose on the Adani group in this judgment?",
+      "flagged": true,
+      "best_distance": 0.44
+    },
+    {
+      "question": "What compensation did the Court order to be paid to retail investors who lost money in the Adani stock crash?",
+      "flagged": true,
+      "best_distance": 0.447
+    },
+    {
+      "question": "What sentence did the Court award to Nathan Anderson for market manipulation?",
+      "flagged": true,
+      "best_distance": 0.481
+    },
+    {
+      "question": "What did the Supreme Court hold about the Reserve Bank of India's regulation of cryptocurrency exchanges?",
+      "flagged": true,
+      "best_distance": 0.442
+    },
+    {
+      "question": "Which sections of the Income Tax Act did the Court interpret in this case?",
+      "flagged": true,
+      "best_distance": 0.549
+    }
+  ]
+}

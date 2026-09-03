@@ -19,7 +19,7 @@ import chromadb
 from pypdf import PdfReader
 from sentence_transformers import SentenceTransformer
 
-GEN_MODEL = "llama-3.1-8b-instant"
+GEN_MODEL = "openai/gpt-oss-20b"  # llama-3.1-8b-instant was retired from Groq
 
 # BGE models want a prefix on the QUERY side only (not on documents).
 QUERY_PREFIXES = {

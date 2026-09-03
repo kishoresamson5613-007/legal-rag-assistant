@@ -286,6 +286,11 @@ with st.sidebar:
 
         if st.button("🗑️ Clear All Documents", use_container_width=True):
             db_client.delete_collection(COLLECTION)
+            st.session_state.collection = db_client.get_or_create_collection(
+                name=COLLECTION,
+                embedding_function=get_embedding_fn(),
+                metadata={"hnsw:space": "cosine"},
+            )
             st.session_state.chat_history = []
             st.rerun()
     else:

@@ -32,7 +32,7 @@ from pypdf import PdfReader
 
 # ── Configuration ────────────────────────────────────────────
 EMBED_MODEL = "all-MiniLM-L6-v2"          # Local embedding model — no API needed
-GEN_MODEL   = "llama-3.1-8b-instant"      # Groq-hosted Llama — fast & free
+GEN_MODEL   = "openai/gpt-oss-20b"        # Groq-hosted — fast & free (llama-3.1-8b-instant was retired)
 COLLECTION  = "legal_docs"                 # ChromaDB collection name
 
 CHUNK_SIZE    = 800   # How many characters per chunk

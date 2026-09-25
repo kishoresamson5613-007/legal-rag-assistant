@@ -146,6 +146,15 @@ def write_summary_table():
         rows.append(s)
     if not rows:
         return
+    # Judge columns only appear if at least one config was run with --judge.
+    has_judge = any("faithfulness_mean" in s for s in rows)
+
+    header = ("| config | chunks | " + " | ".join(METRIC_COLUMNS)
+              + " | guard false-alarm | guard catch |")
+    n_cols = len(METRIC_COLUMNS) + 4
+    if has_judge:
+        header += " faith | correct |"
+        n_cols += 2
 
     lines = [
         "# Evaluation Results",
@@ -153,28 +162,30 @@ def write_summary_table():
         f"Corpus: `{CORPUS_PDF.name}` · "
         f"{rows[0]['n_answerable']} answerable + {rows[0]['n_unanswerable']} unanswerable questions",
         "",
-        "| config | chunks | " + " | ".join(METRIC_COLUMNS) +
-        " | guard false-alarm | guard catch | faith | correct |",
-        "|" + "---|" * (len(METRIC_COLUMNS) + 6),
+        header,
+        "|" + "---|" * n_cols,
     ]
     for s in rows:
         r = s["retrieval"]
-        lines.append(
+        line = (
             f"| {s['config']['name']} | {s['num_chunks']} | "
             + " | ".join(f"{r.get(m, '')}" for m in METRIC_COLUMNS)
             + f" | {s.get('guard_false_alarm_rate', '')} "
-            + f"| {s.get('guard_catch_rate', '')} "
-            + f"| {s.get('faithfulness_mean', '—')} "
-            + f"| {s.get('correctness_mean', '—')} |"
+            + f"| {s.get('guard_catch_rate', '')} |"
         )
-    lines += [
-        "",
+        if has_judge:
+            line += (f" {s.get('faithfulness_mean', '—')} "
+                     f"| {s.get('correctness_mean', '—')} |")
+        lines.append(line)
+    notes = (
         "**Metric notes** — hit@k: fraction of questions whose golden evidence appears in the "
         "top-k retrieved chunks. MRR: mean reciprocal rank of the first relevant chunk. "
         "Guard false-alarm: answerable questions wrongly flagged low-confidence (lower is better). "
-        "Guard catch: unanswerable questions correctly flagged (higher is better). "
-        "Faith/correct: 1-5 LLM-as-judge means (only when run with --judge).",
-    ]
+        "Guard catch: unanswerable questions correctly flagged (higher is better)."
+    )
+    if has_judge:
+        notes += " Faith/correct: 1-5 LLM-as-judge means (— = config not run with --judge)."
+    lines += ["", notes]
     (RESULTS_DIR / "summary.md").write_text("\n".join(lines), encoding="utf-8")
 
 

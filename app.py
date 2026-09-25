@@ -16,7 +16,7 @@
 # Flow:
 #  Upload PDF → Split into chunks → Convert to vectors (numbers)
 #  → Store in ChromaDB → User asks question → Find matching chunks
-#  → Send to Groq (Llama) → Get grounded answer
+#  → Send to Groq (gpt-oss-20b) → Get grounded answer
 #
 # ============================================================
 
@@ -143,7 +143,7 @@ def add_document(collection, file_bytes: bytes, filename: str) -> int:
 # 2. Search ChromaDB for the most similar document chunks
 # 3. Check confidence (hallucination guard)
 # 4. Build a prompt = chunks + question
-# 5. Send to Groq (Llama) → grounded answer
+# 5. Send to Groq (gpt-oss-20b) → grounded answer
 # ============================================================
 def rag_query(collection, groq_client, question: str):
     if collection.count() == 0:
@@ -305,8 +305,8 @@ with st.sidebar:
 1. **Upload** — PDF text is extracted page by page
 2. **Chunk** — Text is split into 800-character pieces
 3. **Embed** — Each chunk → vectors via local sentence-transformers
-4. **Store** — Vectors saved in ChromaDB (on disk)
-5. **Query** — Question matched against chunks → top matches sent to Llama via Groq → answer
+4. **Store** — Vectors saved in ChromaDB (in memory)
+5. **Query** — Question matched against chunks → top matches sent to gpt-oss-20b via Groq's cloud API → answer
 
 **Hallucination Guard:**
 If no chunk scores above the similarity threshold, a warning

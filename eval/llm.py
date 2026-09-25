@@ -13,7 +13,7 @@ from pathlib import Path
 
 from groq import Groq
 
-JUDGE_MODEL = "llama-3.3-70b-versatile"   # bigger model judges the 8B generator
+JUDGE_MODEL = "llama-3.3-70b-versatile"   # separate, larger model judges the gpt-oss-20b generator
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 

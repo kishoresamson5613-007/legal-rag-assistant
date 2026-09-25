@@ -5,7 +5,7 @@
 #                retrieved context? (catches hallucination)
 # Correctness:   does the answer agree with the golden answer?
 #
-# A larger model (Llama 3.3 70B) judges the 8B generator. Judge
+# A larger model (Llama 3.3 70B) judges the gpt-oss-20b generator. Judge
 # prompts return strict JSON: {"score": 1-5, "reason": "..."}.
 #
 # IMPORTANT for the portfolio writeup: an LLM judge is only

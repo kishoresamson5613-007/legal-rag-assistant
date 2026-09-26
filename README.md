@@ -2,9 +2,13 @@
 
 A Retrieval-Augmented Generation (RAG) system for legal documents. Upload any legal PDF and ask questions in plain English — answers come directly from the document, not from the AI's general knowledge.
 
-## Demo
+## Live Demo
+
+**[Try it on Streamlit Cloud →](https://legal-rag-assistant-usp7kh8qjt5bruawxfygz4.streamlit.app)**
 
 Upload a legal PDF → Ask a question → Get a grounded answer with source citations.
+
+You'll need a free [Groq API key](https://console.groq.com) to ask questions — enter it in the sidebar.
 
 ## How It Works
 

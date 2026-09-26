@@ -57,17 +57,28 @@ def get_embedding_fn():
     return SentenceTransformerEmbeddingFunction(model_name=EMBED_MODEL)
 
 
-def initialise_db():
-    # EphemeralClient = in-memory, no disk writes — safe for cloud deployment.
-    # One client per session so users don't share each other's documents.
-    embedding_fn = get_embedding_fn()
-    db_client = chromadb.EphemeralClient()
-    doc_collection = db_client.get_or_create_collection(
-        name=COLLECTION,
-        embedding_function=embedding_fn,
+# EphemeralClient = in-memory, no disk writes — safe for cloud deployment.
+# All EphemeralClients in one process share the same store, so we build
+# exactly one client for the whole app and cache it.
+@st.cache_resource
+def get_db_client():
+    return chromadb.EphemeralClient()
+
+
+def create_collection(db_client, name: str):
+    return db_client.get_or_create_collection(
+        name=name,
+        embedding_function=get_embedding_fn(),
         metadata={"hnsw:space": "cosine"},
     )
-    return db_client, doc_collection
+
+
+def initialise_db():
+    # The client is shared, so each session gets its own uniquely named
+    # collection — users don't see or clear each other's documents.
+    db_client = get_db_client()
+    collection_name = f"{COLLECTION}_{uuid.uuid4().hex}"
+    return db_client, create_collection(db_client, collection_name)
 
 
 # ============================================================
@@ -285,12 +296,9 @@ with st.sidebar:
         st.caption(f"Total chunks in database: {collection.count()}")
 
         if st.button("🗑️ Clear All Documents", use_container_width=True):
-            db_client.delete_collection(COLLECTION)
-            st.session_state.collection = db_client.get_or_create_collection(
-                name=COLLECTION,
-                embedding_function=get_embedding_fn(),
-                metadata={"hnsw:space": "cosine"},
-            )
+            session_collection = collection.name
+            db_client.delete_collection(session_collection)
+            st.session_state.collection = create_collection(db_client, session_collection)
             st.session_state.chat_history = []
             st.rerun()
     else:

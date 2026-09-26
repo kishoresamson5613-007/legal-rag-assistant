@@ -1,4 +1,4 @@
-chromadb>=0.5.20
+chromadb==1.5.9
 streamlit>=1.40.0
 pypdf>=4.3.0
 sentence-transformers>=3.0.0

@@ -1,0 +1,2 @@
+# Hook scripts must keep LF endings or /bin/sh can fail on them.
+.githooks/* text eol=lf

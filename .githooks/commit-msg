@@ -1,0 +1,16 @@
+#!/bin/sh
+# Strip Claude attribution from every commit message.
+#   - "Co-Authored-By: Claude ..." trailers (any case)
+#   - "Generated with Claude Code" lines, including the
+#     "🤖 Generated with [Claude Code](...)" form
+# Then tidy up blank lines left behind.
+
+msg_file="$1"
+tmp_file="$msg_file.tmp"
+
+grep -v -i \
+    -e '^[[:space:]]*co-authored-by:[[:space:]]*claude' \
+    -e 'generated with \[\?claude code' \
+    "$msg_file" | git stripspace > "$tmp_file"
+
+mv "$tmp_file" "$msg_file"

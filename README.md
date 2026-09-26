@@ -44,6 +44,12 @@ streamlit run app.py
 
 Requires a free [Groq API key](https://console.groq.com) — enter it in the sidebar.
 
+If you'll be committing, enable the repo's git hooks once per clone (git doesn't turn them on automatically):
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ## Features
 
 - Hallucination guard — warns when the document lacks relevant information
